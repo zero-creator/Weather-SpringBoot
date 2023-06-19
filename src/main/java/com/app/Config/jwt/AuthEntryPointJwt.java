@@ -1,4 +1,4 @@
-package com.app.Config.jwt;
+package com.app.config.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;

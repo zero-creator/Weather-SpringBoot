@@ -1,4 +1,4 @@
-package com.app.Config;
+package com.app.config;
 
 import com.app.entities.UserModel;
 import org.springframework.security.core.GrantedAuthority;

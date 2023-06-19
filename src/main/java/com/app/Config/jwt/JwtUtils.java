@@ -1,6 +1,6 @@
-package com.app.Config.jwt;
+package com.app.config.jwt;
 
-import com.app.Config.CustomUserDetails;
+import com.app.config.CustomUserDetails;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

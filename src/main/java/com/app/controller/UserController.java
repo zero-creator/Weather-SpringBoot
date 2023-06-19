@@ -1,9 +1,10 @@
 package com.app.controller;
 
-import com.app.Config.CustomUserDetails;
-import com.app.Config.jwt.JwtUtils;
+import com.app.config.CustomUserDetails;
+import com.app.config.jwt.JwtUtils;
 import com.app.entities.UserModel;
 import com.app.repo.UserRepository;
+import com.app.response.loginResponse;
 import com.app.services.IUserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,11 +21,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -103,7 +101,9 @@ public class UserController {
 
         ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
 
-        UserModel response = userRepository.getUserByEmail(loginRequest.get("Username"));
+        UserModel res = userRepository.getUserByEmail(loginRequest.get("Username"));
+
+        loginResponse response=new loginResponse(res.getId(), res.getName(), res.getEmail(), res.getRole());
 
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
                 .body(response);
